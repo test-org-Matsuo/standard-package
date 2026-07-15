@@ -1,0 +1,6 @@
+ID	関連関数	正常系/異常系	テスト観点	テストケース	期待結果
+TC-001	main()	正常系	条件分岐網羅		
+TC-002	main()	正常系	境界値		
+TC-003	read_record()	正常系	条件分岐網羅		
+TC-004	check_sequence()	異常系	シーケンスチェック		
+TC-S001	insert_data1()	正常系	SQL観点		

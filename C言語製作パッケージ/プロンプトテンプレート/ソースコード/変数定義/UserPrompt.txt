@@ -1,0 +1,107 @@
+下記sampleの形式で出力してください。
+
+<sample>
+<input>
+## 変数定義
+### [#include]句
+1. ヘッダーファイル
+	1. AAAA.h
+	2. BBBB.h
+2. SQL用ヘッダーファイル
+	1. CCCC.H
+
+### [#define]句
+1. 定義
+   1. 変数名：SAMPLE1 値：180
+   2. 変数名：SAMPLE2 値：180
+2. SQL用定義
+   1. 変数名：SAMPLE3 値："0"
+   2. 変数名：SAMPLE4 値："   " 
+
+### extern宣言
+1. 型：int 変数：XXXXX
+2. 型：int 変数：YYYYY
+
+### 構造体
+- 構造体名：tag　
+1. char DDD
+2. char EEE
+3. char FFF
+	- 再定義名：Sample
+
+### 内部関数プロトタイプ
+1. function1
+	- 引数：const char *sample5
+	- 戻り値：static long
+
+### 外部関数プロトタイプ
+1. function2
+	- 引数：void
+	- 戻り値：long
+</input>
+出力 : 
+```c
+/*----------------------------------------------------------------------------*/
+/*  Define Include File                                                       */
+/*----------------------------------------------------------------------------*/
+#include "AAAA.h"
+#include "BBBB.h"
+
+EXEC SQL INCLUDE CCCC.H;
+
+/*----------------------------------------------------------------------------*/
+/*  Define Constant Variable                                                  */
+/*----------------------------------------------------------------------------*/
+#define SAMPLE1     180        
+#define SAMPLE2       8
+
+EXEC SQL BEGIN DECLARE SECTION;
+    static const char SAMPLE3[] = "0"; 
+    static const char SAMPLE4[] = "   ";
+EXEC SQL END DECLARE SECTION;
+
+/*----------------------------------------------------------------------------*/
+/* Define External Variable                                                   */
+/*----------------------------------------------------------------------------*/
+extern int XXXXX;
+extern int YYYYY;
+
+/*----------------------------------------------------------------------------*/
+/* Define Structure                                                           */
+/*----------------------------------------------------------------------------*/
+struct Sample_tag {
+    char DDD;           
+    char EEE;          
+    char FFF;                  
+};
+typedef struct Sample_tag Sample;
+
+/*----------------------------------------------------------------------------*/
+/*  Define Internal Function Prototype                                        */
+/*----------------------------------------------------------------------------*/
+static long function1(
+    const char *sample5
+    );
+
+/*----------------------------------------------------------------------------*/
+/*  Define External Function Prototype                                        */
+/*----------------------------------------------------------------------------*/
+long function2(
+    void
+    );
+```
+</sample>
+
+<instruction>
+1. 1つの処理に関する、説明が<input>タグで与えられます。
+2. 1つの関数として、プログラムを```cタグ内に生成して下さい。
+3. 以下の関数情報を使用して、以下の関数のみを出力してください。
+
+</instruction>
+
+<input>
+{variable_definition}
+</input>
+
+出力 : 
+```c

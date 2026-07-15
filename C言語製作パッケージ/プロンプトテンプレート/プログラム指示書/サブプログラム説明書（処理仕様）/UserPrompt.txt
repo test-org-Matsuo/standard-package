@@ -1,0 +1,32 @@
+下記sampleの形式でパラメータ、戻り値、型を出力してください。
+
+<sample>
+<input>
+static int Test(int num1, int num2)
+{
+xxx
+}
+</input>
+OUTPUT:
+### Test
+- パラメータ：
+  - int num1 : 数値1
+  - int num2 : 数値2
+- 戻り値：
+  - 0 : 正常終了
+  - 1 : 異常終了
+- 型： static int
+</sample>
+
+<instruction>
+<input>タグで与えられたCプログラムを丁寧に説明してください。
+1. 説明は、Markdownの記法を用いて記載してください。
+2. 処理の流れは出力しないでください。
+3. パラメータは物理名と論理名をセットで出力してください。
+</instruction>
+
+<input>
+{code}
+</input>
+出力：
+###

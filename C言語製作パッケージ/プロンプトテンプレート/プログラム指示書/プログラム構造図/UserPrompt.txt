@@ -1,0 +1,151 @@
+次のルールに従い、C言語の関数呼び出しに基づくPlantUML形式のWBSモジュール構成図を出力してください。
+- 関数の呼び出し階層を必ず1段階ずつ進めてください。
+- 同じ関数が同じ呼び出し元で複数回使われている場合でも、1回だけ出力してください。
+- PGM内で定義された関数以外の関数呼び出しは、無視してください。
+- 関数名の対応表（別途指定）に従って、論理名に変換してください。
+- PlantUML形式は以下の「sample」の形式に従ってください。
+```sample
+```c
+int main() {
+    initialize();
+    process();
+    terminate();
+}
+static void initialize() {
+    abend();
+    abend();
+}
+static void process()
+{
+   fetchData();
+   abend();
+   abend();
+   fetchInOutReslt();
+   abend();
+   abend();
+   abend();
+}
+static void terminate(void)
+{
+}
+int fetchData() {
+    abend();
+    writeData();
+}
+int writeData() {
+    abend();
+}
+static void fetchInOutReslt(void)
+{
+   insertOutPort();
+  insertIntoGate();
+}
+static void insertOutPort(void)
+{
+   addOutPort(iNewDtFlg);
+}
+static void addOutPort(int iNewDtFlg)
+{
+   iResult = deleteSippInstWast();
+   abend();
+}
+static int deleteSippInstWast(void)
+{
+   iResult = selectInstLdAddr(sHanCdWk,          sFrmKbnNoWk,
+                               sNotInstructionWk, sVesselCodeWk,
+                               sDepartureDateWk,  &lDestGrpNoWk,
+                               sVhcUniqInfoWk,    sLanenoWk,
+                               &iLaneNoSubWk );
+   abend();
+   abend();
+
+}
+static int selectInstLdAddr(const char *sHanCd,          const char *sFrmKbnNo,
+                            const char *sNotInstruction, char *sVesselCode,
+                            char *sDepartureDate,        long *plDestGrpNo,
+                            char *sVhcUniqInfo,          char *sLaneNo,
+                            int  *piLaneSubNo )
+{
+   abend();
+}
+static void insertIntoGate(void)
+{
+   addIntoGate(iNewDtFlg);
+}
+static void addIntoGate(int iNewDtFlg)
+{
+   iResult = updateVhcInfoStatIn();
+   iResult = updateKey();
+}
+static int updateKey(void)
+{
+   abend();
+   abend();
+   abend();
+   abend();
+}
+static int updateVhcInfoStatIn(void)
+{
+}
+```
+
+OUTPUT:
+@startwbs
+title
+構成図
+end title
+*:main
+main関数;
+**:initialize
+初期処理;
+***:abend
+異常終了処理;
+**:process
+主処理;
+***:fetchData
+データ取得処理;
+****:writeData
+データ出力処理;
+*****:abend
+異常終了;
+***:fetchInOutReslt
+出入門実績読込;
+****:insertOutPort
+出港実績登録;
+*****:addOutPort
+出港実績追加;
+******:deleteSippInstWast
+不要船積指示情報削除;
+*******:selectInstLdAddr
+船積レーン車両指示取得;
+*******:abend
+異常終了;
+********:abend
+異常終了;
+******:abend
+異常終了;
+****:insertIntoGate
+入門実績登録;
+*****: addIntoGate
+入門実績追加;
+******:updateVhcInfoStatIn
+車両情報状態更新（入庫）;
+******:updateKey
+キー情報更新;
+*******:abend
+異常終了;
+**:terminate
+終了処理;
+@endwbs
+```
+
+```c
+{code}
+```
+関数名対応表：
+| 物理名 | 論理名 |
+{process_list}
+
+
+OUTPUT :
+@startwbs
